@@ -30,7 +30,6 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     self.fadeMusic = NO;
 
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
 
 }
 
