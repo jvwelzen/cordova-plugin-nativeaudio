@@ -46,7 +46,6 @@ static const CGFloat FADE_DELAY = 0.08;
 
 - (void) play
 {
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
     [player setCurrentTime:0.0];
     player.numberOfLoops = 0;
@@ -60,7 +59,6 @@ static const CGFloat FADE_DELAY = 0.08;
 // The delay determines how fast the decrease happens
 - (void)playWithFade
 {
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
     
     if (!player.isPlaying)
@@ -92,7 +90,6 @@ static const CGFloat FADE_DELAY = 0.08;
     for (int x = 0; x < [voices count]; x++) {
         AVAudioPlayer * player = [voices objectAtIndex:x];
         [player stop];
-        [[AVAudioSession sharedInstance] setActive:NO error:nil];
     }
 }
 
@@ -111,7 +108,6 @@ static const CGFloat FADE_DELAY = 0.08;
         } else {
             // Stop and get the sound ready for playing again
             [player stop];
-            [[AVAudioSession sharedInstance] setActive:NO error:nil];
             player.volume = initialVolume.floatValue;
             player.currentTime = 0;
         }
