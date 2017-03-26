@@ -47,6 +47,7 @@ static const CGFloat FADE_DELAY = 0.08;
 - (void) play
 {
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
+    AVAudioPlayer.setActive(true);
     [player setCurrentTime:0.0];
     player.numberOfLoops = 0;
     [player play];
@@ -60,7 +61,7 @@ static const CGFloat FADE_DELAY = 0.08;
 - (void)playWithFade
 {
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
-    
+    AVAudioPlayer.setActive(true);
     if (!player.isPlaying)
     {
         [player setCurrentTime:0.0];
@@ -90,6 +91,7 @@ static const CGFloat FADE_DELAY = 0.08;
     for (int x = 0; x < [voices count]; x++) {
         AVAudioPlayer * player = [voices objectAtIndex:x];
         [player stop];
+        AVAudioPlayer.setActive(false);
     }
 }
 
@@ -111,6 +113,7 @@ static const CGFloat FADE_DELAY = 0.08;
             player.volume = initialVolume.floatValue;
             player.currentTime = 0;
         }
+        AVAudioPlayer.setActive(false);
     }
     
     if(shouldContinue) {
