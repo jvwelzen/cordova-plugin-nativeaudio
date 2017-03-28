@@ -47,7 +47,7 @@ static const CGFloat FADE_DELAY = 0.08;
 - (void) play
 {
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
-    AVAudioPlayer.setActive(true);
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [player setCurrentTime:0.0];
     player.numberOfLoops = 0;
     [player play];
@@ -61,7 +61,7 @@ static const CGFloat FADE_DELAY = 0.08;
 - (void)playWithFade
 {
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
-    AVAudioPlayer.setActive(true);
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     if (!player.isPlaying)
     {
         [player setCurrentTime:0.0];
@@ -91,8 +91,9 @@ static const CGFloat FADE_DELAY = 0.08;
     for (int x = 0; x < [voices count]; x++) {
         AVAudioPlayer * player = [voices objectAtIndex:x];
         [player stop];
-        AVAudioPlayer.setActive(false);
+        
     }
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
 
 // The volume is decreased repeatedly by the fade step amount until the volume reaches the configured level.
@@ -113,12 +114,12 @@ static const CGFloat FADE_DELAY = 0.08;
             player.volume = initialVolume.floatValue;
             player.currentTime = 0;
         }
-        AVAudioPlayer.setActive(false);
     }
     
     if(shouldContinue) {
         [self performSelector:@selector(stopWithFade) withObject:nil afterDelay:fadeDelay.floatValue];
     }
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
 
 - (void) loop
