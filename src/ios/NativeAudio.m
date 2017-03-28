@@ -28,7 +28,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 - (void)pluginInitialize
 {
     self.fadeMusic = NO;
-
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
 
 }
