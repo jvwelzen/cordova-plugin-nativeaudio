@@ -198,19 +198,10 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 - (void) play:(CDVInvokedUrlCommand *)command
 {
     
-        AudioSessionInitialize(NULL, NULL, nil , nil);
+
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    // we activate the audio session after the options to mix with others is set
-    NSError *setCategoryError = nil;
 
-    // Allows the application to mix its audio with audio from other apps.
-    if (![session setCategory:AVAudioSessionCategoryPlayback
-                  withOptions:AVAudioSessionCategoryOptionDuckOthers
-                        error:&setCategoryError]) {
-
-        NSLog (@"Error setting audio session category.");
-        return;
-    }
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil]
 
     [session setActive: YES error: nil];
     
@@ -263,22 +254,10 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 
 - (void) stop:(CDVInvokedUrlCommand *)command
 {
-    
-        AudioSessionInitialize(NULL, NULL, nil , nil);
+
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    // we activate the audio session after the options to mix with others is set
-    NSError *setCategoryError = nil;
 
-    // Allows the application to mix its audio with audio from other apps.
-    if (![session setCategory:AVAudioSessionCategoryPlayback
-                  withOptions:AVAudioSessionCategoryOptionDuckOthers
-                        error:&setCategoryError]) {
-
-        NSLog (@"Error setting audio session category.");
-        return;
-    }
-
-    [session setActive: NO error: nil];
+    [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
     
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
