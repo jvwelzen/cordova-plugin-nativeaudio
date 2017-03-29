@@ -196,7 +196,9 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 {
     AVAudioSession *session = [AVAudioSession sharedInstance];
     
-    [session setActive:YES withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    [session setActive:YES error:nil];
     
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
