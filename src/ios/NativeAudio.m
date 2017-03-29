@@ -194,7 +194,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 
 - (void) play:(CDVInvokedUrlCommand *)command
 {
-    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
 
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
@@ -249,6 +249,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 
 - (void) stop:(CDVInvokedUrlCommand *)command
 {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
     
     [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
     
