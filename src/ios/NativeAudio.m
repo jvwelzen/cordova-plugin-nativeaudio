@@ -42,8 +42,6 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         NSLog (@"Error setting audio session category.");
         return;
     }
-
-    [session setActive: YES error: nil];
   
 }
 
@@ -199,8 +197,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
 
     AVAudioSession *session = [AVAudioSession sharedInstance];
-
-    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
 
     [session setActive: YES error: nil];
     
@@ -254,6 +252,9 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 - (void) stop:(CDVInvokedUrlCommand *)command
 {
 
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    [session setActive:NO error:nil];
     
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
