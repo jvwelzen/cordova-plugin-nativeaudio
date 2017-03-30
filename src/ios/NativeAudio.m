@@ -194,15 +194,38 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 
 - (void) play:(CDVInvokedUrlCommand *)command
 {
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-    [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
-    
-    [session setActive:YES error:nil];
     
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
+    
+    NSNumber *audioType = nil;
+    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    {
+        audioType = [arguments objectAtIndex:5];
+        
+        if(audioType == 1){ // AudioType == Duck Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+            
+        } else if (audioType == 2){ // AudioType == Stop Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            
+        } else { // AudioType == Mix with Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
+            
+        }
+    }
+    
+    [session setActive:YES error:nil];
 
     [self.commandDelegate runInBackground:^{
         if (audioMapping) {
@@ -249,13 +272,36 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 
 - (void) stop:(CDVInvokedUrlCommand *)command
 {
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-    [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
     
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
+    
+    NSNumber *audioType = nil;
+    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    {
+        audioType = [arguments objectAtIndex:5];
+        
+        if(audioType == 1){ // AudioType == Duck Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+            
+        } else if (audioType == 2){ // AudioType == Stop Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+            
+        } else { // AudioType == Mix with Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+            
+        }
+    }
 
     if ( audioMapping ) {
         NSObject* asset = audioMapping[audioID];
@@ -300,7 +346,34 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
-
+    NSNumber *audioType = nil;
+    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    {
+        audioType = [arguments objectAtIndex:5];
+        
+        if(audioType == 1){ // AudioType == Duck Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+            
+        } else if (audioType == 2){ // AudioType == Stop Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            
+        } else { // AudioType == Mix with Others
+            
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+        [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
+            
+        }
+    }
+    
+    [session setActive:YES error:nil];
+    
     if ( audioMapping ) {
         NSObject* asset = audioMapping[audioID];
 
