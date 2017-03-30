@@ -199,12 +199,11 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
     
-    NSNumber *audioType = nil;
     if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:5];
         
-        if(audioType == 1){ // AudioType == Duck Others
+        if(audioType == 'duckOthers'){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -212,7 +211,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if (audioType == 2){ // AudioType == Stop Others
+        } else if (audioType == 'stopOthers'){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -281,18 +280,17 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
     
-    NSNumber *audioType = nil;
     if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:5];
         
-        if(audioType == 1){ // AudioType == Duck Others
+        if(audioType == 'duckOthers'){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
-        } else if (audioType == 2){ // AudioType == Stop Others
+        } else if (audioType == 'stopOthers'){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -350,20 +348,19 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
-    NSNumber *audioType = nil;
     if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:5];
         
-        if(audioType == 1){ // AudioType == Duck Others
+        if(audioType == 'duckOthers'){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
-            
+        
         [session setActive:YES error:nil];
             
-        } else if (audioType == 2){ // AudioType == Stop Others
+        } else if (audioType == 'stopOthers'){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
