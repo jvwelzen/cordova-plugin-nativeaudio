@@ -200,7 +200,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *audioID = [arguments objectAtIndex:0];
     NSString *audioType = [arguments objectAtIndex:1];
     
-    if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
+    if ( [arguments objectAtIndex:1] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:1];
         
@@ -282,7 +282,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *audioID = [arguments objectAtIndex:0];
     NSString *audioType = [arguments objectAtIndex:1];
     
-    if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
+    if ( [arguments objectAtIndex:1] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:1];
         
@@ -351,7 +351,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *audioID = [arguments objectAtIndex:0];
     NSString *audioType = [arguments objectAtIndex:1];
 
-    if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
+    if ( [arguments objectAtIndex:1] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:1];
         
