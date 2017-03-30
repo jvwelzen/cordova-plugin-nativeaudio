@@ -209,6 +209,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+        
+        [session setActive:YES error:nil];
             
         } else if (audioType == 2){ // AudioType == Stop Others
             
@@ -216,16 +218,18 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
         [session setCategory:AVAudioSessionCategoryPlayback error:nil];
             
+        [session setActive:YES error:nil];
+            
         } else { // AudioType == Mix with Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
             
+        [session setActive:YES error:nil];
+            
         }
     }
-    
-    [session setActive:YES error:nil];
 
     [self.commandDelegate runInBackground:^{
         if (audioMapping) {
@@ -357,11 +361,15 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
         [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
             
+        [session setActive:YES error:nil];
+            
         } else if (audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            
+        [session setActive:YES error:nil];
             
         } else { // AudioType == Mix with Others
             
@@ -369,10 +377,10 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
         [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
             
+        [session setActive:YES error:nil];
+            
         }
     }
-    
-    [session setActive:YES error:nil];
     
     if ( audioMapping ) {
         NSObject* asset = audioMapping[audioID];
