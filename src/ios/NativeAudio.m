@@ -198,7 +198,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    
+    NSNumber *audioType = nil;
     if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:1];
@@ -279,7 +279,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    
+    NSNumber *audioType = nil;
     if ( [arguments count] > 1  && [arguments objectAtIndex:1] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:1];
@@ -347,7 +347,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-
+    NSNumber *audioType = nil;
     if ( [arguments count] > 1  && [arguments objectAtIndex:1] != [NSNull null])
     {
         audioType = [arguments objectAtIndex:1];
