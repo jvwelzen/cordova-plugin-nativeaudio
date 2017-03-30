@@ -198,11 +198,11 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    NSString *audioType = [arguments objectAtIndex:5];
+    NSString *audioType = [arguments objectAtIndex:1];
     
-    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
     {
-        audioType = [arguments objectAtIndex:5];
+        audioType = [arguments objectAtIndex:1];
         
         if(audioType == 'duckOthers'){ // AudioType == Duck Others
             
@@ -280,11 +280,11 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    NSString *audioType = [arguments objectAtIndex:5];
+    NSString *audioType = [arguments objectAtIndex:1];
     
-    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
     {
-        audioType = [arguments objectAtIndex:5];
+        audioType = [arguments objectAtIndex:1];
         
         if(audioType == 'duckOthers'){ // AudioType == Duck Others
             
@@ -349,11 +349,11 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    NSString *audioType = [arguments objectAtIndex:5];
+    NSString *audioType = [arguments objectAtIndex:1];
 
-    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    if ( [arguments count] > 1 && [arguments objectAtIndex:1] != [NSNull null])
     {
-        audioType = [arguments objectAtIndex:5];
+        audioType = [arguments objectAtIndex:1];
         
         if(audioType == 'duckOthers'){ // AudioType == Duck Others
             
