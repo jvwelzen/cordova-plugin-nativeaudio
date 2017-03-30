@@ -156,7 +156,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         // faded in and out
         delay = [arguments objectAtIndex:4];
     }
-
+    
     if(audioMapping == nil) {
         audioMapping = [NSMutableDictionary dictionary];
     }
