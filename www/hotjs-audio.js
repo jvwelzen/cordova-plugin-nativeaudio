@@ -19,7 +19,7 @@ var hotjs = hotjs || {};
             this.res_cache[ id ] = res;
         },
 
-        preloadComplex: function(id, assetPath, volume, voices, delay, audioType, success, fail) {
+        preloadComplex: function(id, assetPath, volume, voices, delay, success, fail) {
             var res = new Audio();
             res.addEventListener('canplaythrough', success, false);
             res.onerror = fail;
@@ -29,7 +29,7 @@ var hotjs = hotjs || {};
             this.res_cache[ id ] = res;
         },
 
-        play: function(id, success, fail) {
+        play: function(id, audioType, success, fail) {
             var res = this.res_cache[ id ];
             if(typeof res === 'object') {
                 res.play();
@@ -47,7 +47,7 @@ var hotjs = hotjs || {};
             if(typeof success === 'function') success();
         },
 
-        loop: function(id, success, fail) {
+        loop: function(id, audioType, success, fail) {
             var res = this.res_cache[ id ];
             if(typeof res === 'object') {
                 res.loop = true;
@@ -57,7 +57,7 @@ var hotjs = hotjs || {};
                 if(typeof fail === 'function') fail();
             }
        },
-        stop: function(id, success, fail) {
+        stop: function(id, audioType, success, fail) {
             var res = this.res_cache[ id ];
             if(typeof res === 'object') {
                 res.pause();
