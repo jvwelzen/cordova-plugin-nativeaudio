@@ -32,25 +32,25 @@ module.exports  = {
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "preloadSimple", [id, assetPath]);
     },
     
-    preloadComplex: function(id, assetPath, volume, voices, delay, successCallback, errorCallback) {
+    preloadComplex: function(id, assetPath, volume, voices, delay, audioType, successCallback, errorCallback) {
 
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "preloadComplex", [id, assetPath, parseFloat(volume), voices, parseFloat(delay)]);
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "preloadComplex", [id, assetPath, parseFloat(volume), voices, parseFloat(delay), audioType]);
     },
 
-    play: function(id, audioType, successCallback, errorCallback, completeCallback) {
+    play: function(id, successCallback, errorCallback, completeCallback) {
         if(typeof completeCallback === "function") {
-        	cordova.exec(completeCallback, errorCallback, "NativeAudio", "addCompleteListener", [id, audioType]);    
+        	cordova.exec(completeCallback, errorCallback, "NativeAudio", "addCompleteListener", [id]);    
         }
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "play", [id, audioType]);
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "play", [id]);
         
     },
 
-    stop: function(id, audioType, successCallback, errorCallback) {
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "stop", [id, audioType]);
+    stop: function(id, successCallback, errorCallback) {
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "stop", [id]);
     },
 
-    loop: function(id, audioType, successCallback, errorCallback) {
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "loop", [id, audioType]);
+    loop: function(id, successCallback, errorCallback) {
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "loop", [id]);
     },
 
     unload: function(id, successCallback, errorCallback) {
