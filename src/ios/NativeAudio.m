@@ -198,6 +198,14 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+   initWithTitle:@"Make an informed choice"
+   message:[arguments objectAtIndex:1]
+   delegate:self
+   cancelButtonTitle:@"Cancel"
+   otherButtonTitles:@"OK", nil];
+[alert show];
         
         if([arguments objectAtIndex:1] == 1){ // AudioType == Duck Others
             
