@@ -21,11 +21,11 @@ typedef void (^CompleteCallback)(NSString*);
 }
 
 - (id) initWithPath:(NSString*) path withVoices:(NSNumber*) numVoices withVolume:(NSNumber*) volume withFadeDelay:(NSNumber *)delay;
-- (void) play withAudioType: audioType;
+- (void) play withAudioType:(NSNumber *) audioType;
 - (void) playWithFade;
-- (void) stop withAudiotype: audioType;
+- (void) stop withAudiotype:(NSNumber *) audioType;
 - (void) stopWithFade;
-- (void) loop withAudioType: audioType;
+- (void) loop withAudioType:(NSNumber *) audioType;
 - (void) unload;
 - (void) setVolume:(NSNumber*) volume;
 - (void) setCallbackAndId:(CompleteCallback)cb audioId:(NSString*)audioId;
