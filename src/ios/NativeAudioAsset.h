@@ -18,10 +18,10 @@ typedef void (^CompleteCallback)(NSString*);
     CompleteCallback finished;
     NSNumber *initialVolume;
     NSNumber *fadeDelay;
-    NSNumber *fadeMusic;
+    NSNumber *musicType;
 }
 
-- (id) initWithPath:(NSString*) path withVoices:(NSNumber*) numVoices withVolume:(NSNumber*) volume withFadeDelay:(NSNumber *)delay withFadeMusic:(NSNumber *)audioType;
+- (id) initWithPath:(NSString*) path withVoices:(NSNumber*) numVoices withVolume:(NSNumber*) volume withFadeDelay:(NSNumber *)delay withMusicType:(NSNumber *)audioType;
 - (void) play;
 - (void) playWithFade;
 - (void) stop;
