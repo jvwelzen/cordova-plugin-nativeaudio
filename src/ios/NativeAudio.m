@@ -199,7 +199,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
-        audioType = [arguments objectAtIndex:1];
+        NSNumber *audioType = [arguments objectAtIndex:1];
         
         if(audioType == 1){ // AudioType == Duck Others
             
@@ -278,7 +278,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
-        audioType = [arguments objectAtIndex:1];
+        NSNumber *audioType = [arguments objectAtIndex:1];
         
         if(audioType == 1){ // AudioType == Duck Others
             
@@ -344,7 +344,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
-        audioType = [arguments objectAtIndex:1];
+        NSNumber *audioType = [arguments objectAtIndex:1];
         
         if(audioType == 1){ // AudioType == Duck Others
             
