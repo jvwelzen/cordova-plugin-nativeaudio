@@ -44,7 +44,7 @@ static const CGFloat FADE_DELAY = 0.08;
     return(self);
 }
 
-- (void) play
+- (void) play withAudioType:(NSNumber *) audioType
 {
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
     [player setCurrentTime:0.0];
@@ -84,7 +84,7 @@ static const CGFloat FADE_DELAY = 0.08;
     }
 }
 
-- (void) stop
+- (void) stop withAudioType:(NSNumber *) audioType
 {
     for (int x = 0; x < [voices count]; x++) {
         AVAudioPlayer * player = [voices objectAtIndex:x];
@@ -118,7 +118,7 @@ static const CGFloat FADE_DELAY = 0.08;
     }
 }
 
-- (void) loop
+- (void) loop withAudioType:(NSNumber *) audioType
 {
     [self stop];
     AVAudioPlayer * player = [voices objectAtIndex:playIndex];
