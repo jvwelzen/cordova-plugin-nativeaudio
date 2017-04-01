@@ -28,7 +28,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 - (void)pluginInitialize
 {
     self.fadeMusic = NO;
-
+    self.audioType = 1;
+    
     AVAudioSession *session = [AVAudioSession sharedInstance];
     // we activate the audio session after the options to mix with others is set
     [session setActive: NO error: nil];
@@ -157,6 +158,14 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         delay = [arguments objectAtIndex:4];
     }
     
+    NSNumber *audioType = nil;
+    if ( [arguments count] > 5 && [arguments objectAtIndex:5] != [NSNull null])
+    {
+        // The delay is determines how fast the asset is
+        // faded in and out
+        audioType = [arguments objectAtIndex:5];
+    }
+    
     if(audioMapping == nil) {
         audioMapping = [NSMutableDictionary dictionary];
     }
@@ -172,7 +181,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
                 NativeAudioAsset* asset = [[NativeAudioAsset alloc] initWithPath:path
                                                                       withVoices:voices
                                                                       withVolume:volume
-                                                                   withFadeDelay:delay];
+                                                                   withFadeDelay:delay
+                                                                   withAudioType:audioType];
 
                 audioMapping[audioID] = asset;
 
@@ -200,7 +210,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *audioID = [arguments objectAtIndex:0];
 
         
-        if([arguments objectAtIndex:1] == 1){ // AudioType == Duck Others
+        if(self.audioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -208,7 +218,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if ([arguments objectAtIndex:1] == 2){ // AudioType == Stop Others
+        } else if (self.audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -277,13 +287,13 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
         
-        if([arguments objectAtIndex:1] == 1){ // AudioType == Duck Others
+        if(self.audioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
-        } else if ([arguments objectAtIndex:1] == 2){ // AudioType == Stop Others
+        } else if (self.audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -341,7 +351,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
         
-        if([arguments objectAtIndex:1] == 1){ // AudioType == Duck Others
+        if(self.audioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -349,7 +359,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if ([arguments objectAtIndex:1] == 2){ // AudioType == Stop Others
+        } else if (self.audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
