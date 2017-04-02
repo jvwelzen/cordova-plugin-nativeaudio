@@ -39,7 +39,7 @@ module.exports  = {
 
     play: function(id, audioType, successCallback, errorCallback, completeCallback) {
         if(typeof completeCallback === "function") {
-        	cordova.exec(completeCallback, errorCallback, "NativeAudio", "addCompleteListener", [id]);    
+        	cordova.exec(completeCallback, errorCallback, "NativeAudio", "addCompleteListener", [id, audioType]);    
         }
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "play", [id, audioType]);
         
