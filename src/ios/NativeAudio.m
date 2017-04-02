@@ -28,6 +28,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 - (void)pluginInitialize
 {
     self.fadeMusic = NO;
+    initialAudioType = nil;
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
     // we activate the audio session after the options to mix with others is set
