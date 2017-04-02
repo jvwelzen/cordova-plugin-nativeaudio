@@ -283,7 +283,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
-        [session setActive:NO error:nil];
+        [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
         } else if (audioType == '2'){ // AudioType == Stop Others
             
@@ -295,7 +295,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
-        [session setActive:NO error:nil];
+        [session setActive:NO  withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
         }
 
