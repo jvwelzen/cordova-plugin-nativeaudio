@@ -199,10 +199,9 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    int number = [arguments objectAtIndex:1];
-    audioType = &number;  
+    int audioType = [arguments objectAtIndex:1]; 
     
-        if(*audioType == 1){ // AudioType == Duck Others
+        if(audioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -210,7 +209,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if (*audioType == 2){ // AudioType == Stop Others
+        } else if (audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -278,16 +277,15 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    int number = [arguments objectAtIndex:1];
-    audioType = &number; 
+    int audioType = [arguments objectAtIndex:1]; 
     
-        if(*audioType == 1){ // AudioType == Duck Others
+        if(audioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
-        } else if (*audioType == 2){ // AudioType == Stop Others
+        } else if (audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -344,10 +342,9 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
-    int number = [arguments objectAtIndex:1];
-    audioType = &number; 
+    int audioType = [arguments objectAtIndex:1]; 
         
-        if(*audioType == 1){ // AudioType == Duck Others
+        if(audioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -355,7 +352,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if (*audioType == 2){ // AudioType == Stop Others
+        } else if (audioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
