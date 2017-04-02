@@ -184,6 +184,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
                                                                    withAudioType:audioType];
 
                 audioMapping[audioID] = asset;
+                initialAudioType = audioType;
 
                 NSString *RESULT = [NSString stringWithFormat:@"%@ (%@)", INFO_ASSET_LOADED, audioID];
                 [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: RESULT] callbackId:callbackId];
@@ -209,7 +210,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *audioID = [arguments objectAtIndex:0];
 
         
-        if(audioType == 1){ // AudioType == Duck Others
+        if(initialAudioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -217,7 +218,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if (audioType == 2){ // AudioType == Stop Others
+        } else if (initialAudioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -286,13 +287,13 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
         
-        if(audioType == 1){ // AudioType == Duck Others
+        if(initialAudioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
         [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
-        } else if (audioType == 2){ // AudioType == Stop Others
+        } else if (initialAudioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -350,7 +351,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
         
-        if(audioType == 1){ // AudioType == Duck Others
+        if(initialAudioType == 1){ // AudioType == Duck Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
@@ -358,7 +359,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
         [session setActive:YES error:nil];
             
-        } else if (audioType == 2){ // AudioType == Stop Others
+        } else if (initialAudioType == 2){ // AudioType == Stop Others
             
         AVAudioSession *session = [AVAudioSession sharedInstance];
     
