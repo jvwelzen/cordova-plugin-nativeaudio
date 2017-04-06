@@ -197,19 +197,19 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
         if(audioType == '1'){ // AudioType == Duck Others
             
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckhOthers error:nil]
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckhOthers error:nil];
         
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
             
         } else if (audioType == '2'){ // AudioType == Stop Others
             
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil]
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
             
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
             
         } else { // AudioType == Mix with Others
             
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil]
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
             
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
             
