@@ -29,19 +29,13 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 {
     self.fadeMusic = NO;
     
-    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
     // we activate the audio session after the options to mix with others is set
-    [session setActive: NO error: nil];
-    NSError *setCategoryError = nil;
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 
     // Allows the application to mix its audio with audio from other apps.
-    if (![session setCategory:AVAudioSessionCategoryAmbient
-                  withOptions:AVAudioSessionCategoryOptionMixWithOthers
-                        error:&setCategoryError]) {
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
 
-        NSLog (@"Error setting audio session category.");
-        return;
-    }
     
 }
 
@@ -203,27 +197,21 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
         if(audioType == '1'){ // AudioType == Duck Others
             
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-        [session setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckhOthers error:nil]
         
-        [session setActive:YES error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
             
         } else if (audioType == '2'){ // AudioType == Stop Others
             
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil]
             
-        [session setActive:YES error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
             
         } else { // AudioType == Mix with Others
             
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-        [session setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil]
             
-        [session setActive:YES error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
             
         }
 
@@ -281,21 +269,15 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
         if(audioType == '1'){ // AudioType == Duck Others
             
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-        [session setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
         } else if (audioType == '2'){ // AudioType == Stop Others
             
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-        [session setActive:NO error:nil];
+        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
         } else { // AudioType == Mix with Others
             
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-    
-        [session setActive:NO  withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
             
         }
 
