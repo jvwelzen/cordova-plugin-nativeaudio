@@ -20,7 +20,7 @@ exports.preloadComplex = function(id, assetPath, volume, voices, delay, success,
     __res_cache[ id ] = res;
 };
 
-exports.play = function(id, audioType, success, fail) {
+exports.play = function(id, success, fail) {
     var res = __res_cache[ id ];
     if(typeof res === 'object') {
         res.play();
@@ -38,7 +38,7 @@ exports.mute = function(ismute, success, fail) {
     if(typeof success === 'function') success();
 };
 
-exports.loop = function(id, audioType, success, fail) {
+exports.loop = function(id, success, fail) {
     var res = __res_cache[ id ];
     if(typeof res === 'object') {
         res.loop = true;
@@ -49,7 +49,7 @@ exports.loop = function(id, audioType, success, fail) {
     }
 };
 
-exports.stop = function(id, audioType, success, fail) {
+exports.stop = function(id, success, fail) {
     var res = __res_cache[ id ];
     if(typeof res === 'object') {
         res.pause();
