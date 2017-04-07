@@ -59,10 +59,12 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 }
 
 - (void) setCategory:(CDVInvokedUrlCommand *)command {
-            
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
         
-        [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    if([command argumentAtIndex:0] == 'duckOthers'){
+        
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+        
+    }
 
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }
@@ -203,7 +205,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
-
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    
     [self.commandDelegate runInBackground:^{
         if (audioMapping) {
 
@@ -254,6 +257,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
 
+    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
 
     if ( audioMapping ) {
         NSObject* asset = audioMapping[audioID];
@@ -297,6 +301,8 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0]; 
+    
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     
     if ( audioMapping ) {
         NSObject* asset = audioMapping[audioID];
@@ -443,6 +449,8 @@ static void (mySystemSoundCompletionProc)(SystemSoundID ssID,void* clientData)
     NSString *callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
+    
+    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
 
     [self.commandDelegate runInBackground:^{
         if (audioMapping) {
