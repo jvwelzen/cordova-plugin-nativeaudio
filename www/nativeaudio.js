@@ -32,16 +32,6 @@ module.exports  = {
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategoryDuckOthers", [audioType]);
     },
     
-    setCategoryMixWithOthers: function(audioType, successCallback, errorCallback) {
-
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategoryMixWithOthers", [audioType]);
-    },
-
-    setCategoryStopOthers: function(audioType, successCallback, errorCallback) {
-
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategoryStopOthers", [audioType]);
-    },
-    
     preloadSimple: function(id, assetPath, successCallback, errorCallback) {
 
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "preloadSimple", [id, assetPath]);
