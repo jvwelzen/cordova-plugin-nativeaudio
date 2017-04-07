@@ -29,7 +29,7 @@ var hotjs = hotjs || {};
             this.res_cache[ id ] = res;
         },
 
-        play: function(id, audioType, success, fail) {
+        play: function(id, success, fail) {
             var res = this.res_cache[ id ];
             if(typeof res === 'object') {
                 res.play();
@@ -47,7 +47,7 @@ var hotjs = hotjs || {};
             if(typeof success === 'function') success();
         },
 
-        loop: function(id, audioType, success, fail) {
+        loop: function(id, success, fail) {
             var res = this.res_cache[ id ];
             if(typeof res === 'object') {
                 res.loop = true;
@@ -57,7 +57,7 @@ var hotjs = hotjs || {};
                 if(typeof fail === 'function') fail();
             }
        },
-        stop: function(id, audioType, success, fail) {
+        stop: function(id, success, fail) {
             var res = this.res_cache[ id ];
             if(typeof res === 'object') {
                 res.pause();
