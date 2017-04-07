@@ -27,11 +27,21 @@ module.exports  = {
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "setOptions", [options]);
     },
     
-    setCategory: function(audioType, successCallback, errorCallback) {
+    setCategoryDuckOthers: function(audioType, successCallback, errorCallback) {
 
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategory", [audioType]);
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategoryDuckOthers", [audioType]);
+    },
+    
+    setCategoryMixWithOthers: function(audioType, successCallback, errorCallback) {
+
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategoryMixWithOthers", [audioType]);
     },
 
+    setCategoryStopOthers: function(audioType, successCallback, errorCallback) {
+
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategoryStopOthers", [audioType]);
+    },
+    
     preloadSimple: function(id, assetPath, successCallback, errorCallback) {
 
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "preloadSimple", [id, assetPath]);
