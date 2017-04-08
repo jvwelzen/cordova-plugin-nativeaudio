@@ -195,7 +195,7 @@ if( window.plugins && window.plugins.NativeAudio ) {
 		console.log( 'error: ' + msg );
 	});
 	
-	window.plugins.NativeAudio.preloadSimple( 'click', 'audio/jazz.mp3', function(msg){
+	window.plugins.NativeAudio.preloadSimple( 'jazz', 'audio/jazz.mp3', function(msg){
 	}, function(msg){
 		console.log( 'error: ' + msg );
 	});
