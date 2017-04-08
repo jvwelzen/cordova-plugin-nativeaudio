@@ -86,6 +86,20 @@ Uses highlevel native APIs with a larger footprint. (iOS: AVAudioPlayer).
 Can be stopped / looped and used with multiple voices. Can be faded in and out using the delay parameter.
 
 
+#### Set Audio Category on iOS
+
+```javascript
+setCategoryDuckOthers: function ()
+
+setCategoryStopOthers: function ()
+
+setCategoryMixWithOthers: function ()
+```
+
+Sets the audio Category on Ios, you can tell the player to duck stop or mix with others.
+When you listen to the completeCallback on the play function you can tell the player to stop and the other audio resumes.
+
+
 ####Volume & Voices
 
 The default **volume** is 1.0, a lower default can be set by using a numerical value from 0.1 to 1.0.
@@ -180,18 +194,38 @@ if( window.plugins && window.plugins.NativeAudio ) {
 	}, function(msg){
 		console.log( 'error: ' + msg );
 	});
+	
+	var errorCallback = function(error) {
+        console.log(error);
+    	};
+
+    	var successCallback = function(success) {
+        console.log(success);
+    	};
+
+    	var completeCallback = function(complete) {
+        console.log(complete);
+        window.plugins.NativeAudio.stop(complete.id)
+    	};
 
 
 	// Play
-	window.plugins.NativeAudio.play( 'click' );
-	window.plugins.NativeAudio.loop( 'music' );
+	window.plugins.NativeAudio.setCategoryDuckOthers();
+	window.plugins.NativeAudio.play('click', successCallback, errorCallback, completeCallback);
+	
+	window.plugins.NativeAudio.setCategoryStopOthers();
+	window.plugins.NativeAudio.play('music', successCallback, errorCallback, completeCallback );
+	
+	window.plugins.NativeAudio.setCategoryMixWithOthers();
+	window.plugins.NativeAudio.loop('jazz', successCallback, errorCallback);
 
 
 	// Stop multichannel clip after 60 seconds
 	window.setTimeout( function(){
 
-		window.plugins.NativeAudio.stop( 'music' );
+		window.plugins.NativeAudio.stop( 'jazz' );
 			
+		window.plugins.NativeAudio.unload( 'jazz' );
 		window.plugins.NativeAudio.unload( 'music' );
 		window.plugins.NativeAudio.unload( 'click' );
 
