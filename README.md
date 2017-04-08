@@ -85,8 +85,17 @@ Loads an audio file into memory. Optimized for background music / ambient sound.
 Uses highlevel native APIs with a larger footprint. (iOS: AVAudioPlayer).
 Can be stopped / looped and used with multiple voices. Can be faded in and out using the delay parameter.
 
+####Volume & Voices
 
-#### Set Audio Category on iOS
+The default **volume** is 1.0, a lower default can be set by using a numerical value from 0.1 to 1.0.
+
+By default, there is 1 **vice**, that is: one instance that will be stopped & restarted on play().
+If there are multiple voices (number greater than 0), it will cycle through voices to play overlapping audio.
+
+Change the float-based **delay** parameter to increase the fade-in/fade-out timing.
+
+
+####Set Audio Category on iOS
 
 ```javascript
 setCategoryDuckOthers: function ()
@@ -99,15 +108,6 @@ setCategoryMixWithOthers: function ()
 Sets the audio Category on Ios, you can tell the player to duck stop or mix with others.
 When you listen to the completeCallback on the play function you can tell the player to stop and the other audio resumes.
 
-
-####Volume & Voices
-
-The default **volume** is 1.0, a lower default can be set by using a numerical value from 0.1 to 1.0.
-
-By default, there is 1 **vice**, that is: one instance that will be stopped & restarted on play().
-If there are multiple voices (number greater than 0), it will cycle through voices to play overlapping audio.
-
-Change the float-based **delay** parameter to increase the fade-in/fade-out timing.
 
 ###Playback
 
