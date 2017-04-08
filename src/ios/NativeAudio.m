@@ -58,6 +58,14 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }
 
+- (void) setCategory:(CDVInvokedUrlCommand *)command {
+        
+        [[AVAudioSession sharedInstance] setCategory:[command argumentAtIndex:0] withOptions:[command argumentAtIndex:1] error:nil];
+        
+
+    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
+}
+
 - (void) setCategoryDuckOthers:(CDVInvokedUrlCommand *)command {
         
     //if([command argumentAtIndex:0] == 'duckOthers'){
