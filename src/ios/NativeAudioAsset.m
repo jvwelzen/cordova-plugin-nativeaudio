@@ -159,7 +159,7 @@ static const CGFloat FADE_DELAY = 0.08;
     if (self->finished) {
         self->finished(self->audioId);
         
-        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+        
     }
 }
 
