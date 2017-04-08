@@ -22,6 +22,7 @@
 @property (assign) BOOL fadeMusic;
 
 - (void) setOptions:(CDVInvokedUrlCommand *)command;
+- (void) setCategory:(CDVInvokedUrlCommand *)command;
 - (void) setCategoryDuckOthers:(CDVInvokedUrlCommand *)command;
 - (void) setCategoryMixWithOthers:(CDVInvokedUrlCommand *)command;
 - (void) setCategoryStopOthers:(CDVInvokedUrlCommand *)command;
