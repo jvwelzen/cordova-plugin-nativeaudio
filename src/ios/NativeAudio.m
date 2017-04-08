@@ -465,7 +465,7 @@ static void (mySystemSoundCompletionProc)(SystemSoundID ssID,void* clientData)
     // Cleanup, these cb are one-shots
     AudioServicesRemoveSystemSoundCompletion(ssID);
     
-    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    
 }
 
 - (void) addCompleteListener:(CDVInvokedUrlCommand *)command
