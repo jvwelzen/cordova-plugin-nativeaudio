@@ -62,7 +62,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
     //if([command argumentAtIndex:0] == 'duckOthers'){
         
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
         
     //}
 
@@ -73,7 +73,7 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
         
     //if([command argumentAtIndex:0] == 'duckOthers'){
         
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
         
     //}
 
@@ -464,6 +464,8 @@ static void (mySystemSoundCompletionProc)(SystemSoundID ssID,void* clientData)
 
     // Cleanup, these cb are one-shots
     AudioServicesRemoveSystemSoundCompletion(ssID);
+    
+    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
 }
 
 - (void) addCompleteListener:(CDVInvokedUrlCommand *)command
@@ -472,7 +474,7 @@ static void (mySystemSoundCompletionProc)(SystemSoundID ssID,void* clientData)
     NSArray* arguments = command.arguments;
     NSString *audioID = [arguments objectAtIndex:0];
     
-    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    
 
     [self.commandDelegate runInBackground:^{
         if (audioMapping) {
