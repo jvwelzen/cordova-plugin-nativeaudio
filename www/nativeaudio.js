@@ -27,9 +27,9 @@ module.exports  = {
         return cordova.exec(successCallback, errorCallback, "NativeAudio", "setOptions", [options]);
     },
     
-    setCategory: function(category, options, successCallback, errorCallback) {
+    setCategory: function(category, categoryType, successCallback, errorCallback) {
 
-        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategory", [category, options]);
+        return cordova.exec(successCallback, errorCallback, "NativeAudio", "setCategory", [category, categoryType]);
     },
     
     setCategoryDuckOthers: function(audioType, successCallback, errorCallback) {
