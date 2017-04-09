@@ -59,8 +59,12 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
 }
 
 - (void) setCategory:(CDVInvokedUrlCommand *)command {
+    
+    NSArray* arguments = command.arguments;
+    NSString *category = [arguments objectAtIndex:0];
+    NSString *options = [arguments objectAtIndex:1];
         
-        [[AVAudioSession sharedInstance] setCategory:[command argumentAtIndex:0] withOptions:[command argumentAtIndex:1] error:nil];
+    [[AVAudioSession sharedInstance] setCategory:catergory withOptions:options error:nil];
         
 
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
