@@ -62,44 +62,18 @@ NSString* INFO_VOLUME_CHANGED = @"(NATIVE AUDIO) Volume changed.";
     
     NSArray* arguments = command.arguments;
     NSString *category = [arguments objectAtIndex:0];
-    AVAudioSessionCategoryOptions optionsOrg = 0;
-    optionsOrg = [arguments objectAtIndex:1];
-        
-    [[AVAudioSession sharedInstance] setCategory:category withOptions:optionsOrg error:nil];
-        
+    NSString *options = [arguments objectAtIndex:1];
+    AVAudioSessionCategoryOptions optionsOrig = 0;
 
-    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-}
-
-- (void) setCategoryDuckOthers:(CDVInvokedUrlCommand *)command {
+    if([options isEqualToString: @"AVAudioSessionCategoryOptionMixWithOthers"]){
+    optionsOrig = AVAudioSessionCategoryOptionMixWithOthers;
+    }
+    if([options isEqualToString: @"AVAudioSessionCategoryOptionDuckOthers"]){
+    optionsOrig = AVAudioSessionCategoryOptionDuckOthers;
+    }
         
-    //if([command argumentAtIndex:0] == 'duckOthers'){
+    [[AVAudioSession sharedInstance] setCategory:category withOptions:optionsOrig error:nil];
         
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
-        
-    //}
-
-    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-}
-
-- (void) setCategoryMixWithOthers:(CDVInvokedUrlCommand *)command {
-        
-    //if([command argumentAtIndex:0] == 'duckOthers'){
-        
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
-        
-    //}
-
-    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
-}
-
-- (void) setCategoryStopOthers:(CDVInvokedUrlCommand *)command {
-        
-    //if([command argumentAtIndex:0] == 'duckOthers'){
-        
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-        
-    //}
 
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }
