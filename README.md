@@ -97,12 +97,14 @@ Change the float-based **delay** parameter to increase the fade-in/fade-out timi
 
 ####Set Audio Category on iOS
 
+* params
+ * category - sets the playback category (playback, ambient, soloambient).
+ * options - sets the options (duck or mix audio).
+
+
 ```javascript
-setCategoryDuckOthers: function ()
+setCategory: function (category, options)
 
-setCategoryStopOthers: function ()
-
-setCategoryMixWithOthers: function ()
 ```
 
 Sets the audio Category on Ios, you can tell the player to duck stop or mix with others.
@@ -215,13 +217,13 @@ if( window.plugins && window.plugins.NativeAudio ) {
 
 
 	// Play
-	window.plugins.NativeAudio.setCategoryDuckOthers();
+	window.plugins.NativeAudio.setCategory('AVAudioSessionCategoryAmbient', 'AVAudioSessionCategoryOptionDuckOthers');
 	window.plugins.NativeAudio.play('click', successCallback, errorCallback, completeCallback);
 	
-	window.plugins.NativeAudio.setCategoryStopOthers();
+	window.plugins.NativeAudio.setCategory('AVAudioSessionCategoryPlayback', '');
 	window.plugins.NativeAudio.play('music', successCallback, errorCallback, completeCallback );
 	
-	window.plugins.NativeAudio.setCategoryMixWithOthers();
+	window.plugins.NativeAudio.setCategory('AVAudioSessionCategoryAmbient', 'AVAudioSessionCategoryOptionMixWithOthers');
 	window.plugins.NativeAudio.loop('jazz', successCallback, errorCallback);
 
 
