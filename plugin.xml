@@ -30,9 +30,9 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/NativeAudio.java" target-dir="src/com/rjfun/cordova/plugin/nativeaudio"/>
-        <source-file src="src/android/NativeAudioAsset.java" target-dir="src/com/rjfun/cordova/plugin/nativeaudio"/>
-        <source-file src="src/android/NativeAudioAssetComplex.java" target-dir="src/com/rjfun/cordova/plugin/nativeaudio"/>
+        <resource-file src="src/android/NativeAudio.java" target="src/com/rjfun/cordova/plugin/nativeaudio/NativeAudio.java"/>
+        <resource-file src="src/android/NativeAudioAsset.java" target="src/com/rjfun/cordova/plugin/nativeaudio/NativeAudioAsset.java"/>
+        <resource-file src="src/android/NativeAudioAssetComplex.java" target="src/com/rjfun/cordova/plugin/nativeaudio/NativeAudioAssetComplex.java"/>
 
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
